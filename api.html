@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation | AI StoryStream</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        .api-hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            text-align: center;
+            color: var(--white);
+        }
+        .api-hero h1 {
+            color: var(--white);
+        }
+        .api-hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+        }
+        .api-section {
+            padding: 80px 0;
+        }
+        .api-nav {
+            position: sticky;
+            top: 80px;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+        .api-nav h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        .api-nav ul {
+            list-style: none;
+        }
+        .api-nav ul li {
+            margin-bottom: 0.75rem;
+        }
+        .api-nav ul li a {
+            color: var(--text-light);
+            transition: var(--transition);
+            display: block;
+            padding: 0.5rem;
+            border-radius: 6px;
+        }
+        .api-nav ul li a:hover {
+            color: var(--primary-color);
+            background: var(--light-sky);
+        }
+        .api-content {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+        .api-content h2 {
+            color: var(--primary-color);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+        }
+        .api-content h2:first-child {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+        .api-content h3 {
+            color: var(--text-dark);
+            margin-top: 1.5rem;
+        }
+        .endpoint {
+            background: var(--light-sky);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        .method {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-right: 10px;
+        }
+        .method.post {
+            background: var(--success);
+            color: var(--white);
+        }
+        .method.get {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        .method.delete {
+            background: var(--error);
+            color: var(--white);
+        }
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            position: relative;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .param-table th,
+        .param-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .param-table th {
+            background: var(--light-sky);
+            font-weight: 600;
+        }
+        .required-badge {
+            background: var(--error);
+            color: var(--white);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-left: 8px;
+        }
+        .optional-badge {
+            background: var(--text-gray);
+            color: var(--white);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="AI Story Generator Logo">
+                    <span>AI Story<span class="highlight">Stream</span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="generator.html">Live Generator</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button class="btn-secondary">Sign In</button>
+                    <button class="btn-primary">Get Started</button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- API Hero -->
+    <section class="api-hero">
+        <div class="container">
+            <h1>API Documentation</h1>
+            <p>Integrate AI-powered story generation into your applications</p>
+        </div>
+    </section>
+
+    <!-- API Documentation -->
+    <section class="api-section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 250px 1fr; gap: 2rem;">
+                <!-- Sidebar Navigation -->
+                <aside class="api-nav">
+                    <h4>Quick Navigation</h4>
+                    <ul>
+                        <li><a href="#getting-started">Getting Started</a></li>
+                        <li><a href="#authentication">Authentication</a></li>
+                        <li><a href="#generate-story">Generate Story</a></li>
+                        <li><a href="#translate">Translate Story</a></li>
+                        <li><a href="#analyze">Analyze Content</a></li>
+                        <li><a href="#webhooks">Webhooks</a></li>
+                        <li><a href="#rate-limits">Rate Limits</a></li>
+                        <li><a href="#errors">Error Handling</a></li>
+                        <li><a href="#sdks">SDKs & Libraries</a></li>
+                    </ul>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="api-content">
+                    <h2 id="getting-started">Getting Started</h2>
+                    <p>Welcome to the AI StoryStream API! Our RESTful API allows you to integrate powerful AI story generation into your applications.</p>
+
+                    <h3>Base URL</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code>https://api.aistorystream.com/v1</code></pre>
+                    </div>
+
+                    <h3>Quick Start</h3>
+                    <p>Here's a simple example to generate your first story:</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code>curl -X POST https://api.aistorystream.com/v1/generate \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "event_type": "sports",
+    "description": "Final goal in championship match",
+    "style": "dramatic",
+    "length": "medium"
+  }'</code></pre>
+                    </div>
+
+                    <h2 id="authentication">Authentication</h2>
+                    <p>All API requests require authentication using an API key. Include your key in the Authorization header:</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+                    </div>
+                    <p>Get your API key from the <a href="#">dashboard</a> after signing up.</p>
+
+                    <h2 id="generate-story">Generate Story</h2>
+                    <p>Generate AI-powered stories for live streaming events.</p>
+
+                    <div class="endpoint">
+                        <span class="method post">POST</span>
+                        <code>/v1/generate</code>
+                    </div>
+
+                    <h3>Request Parameters</h3>
+                    <table class="param-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>event_type</code><span class="required-badge">Required</span></td>
+                                <td>string</td>
+                                <td>Type of event (sports, concert, gaming, news, etc.)</td>
+                            </tr>
+                            <tr>
+                                <td><code>description</code><span class="required-badge">Required</span></td>
+                                <td>string</td>
+                                <td>Event description (max 500 characters)</td>
+                            </tr>
+                            <tr>
+                                <td><code>style</code><span class="optional-badge">Optional</span></td>
+                                <td>string</td>
+                                <td>Writing style (dramatic, humorous, professional, casual)</td>
+                            </tr>
+                            <tr>
+                                <td><code>length</code><span class="optional-badge">Optional</span></td>
+                                <td>string</td>
+                                <td>Story length (short, medium, long)</td>
+                            </tr>
+                            <tr>
+                                <td><code>language</code><span class="optional-badge">Optional</span></td>
+                                <td>string</td>
+                                <td>Language code (en, es, fr, etc.)</td>
+                            </tr>
+                            <tr>
+                                <td><code>include_emojis</code><span class="optional-badge">Optional</span></td>
+                                <td>boolean</td>
+                                <td>Include emojis in output</td>
+                            </tr>
+                            <tr>
+                                <td><code>include_hashtags</code><span class="optional-badge">Optional</span></td>
+                                <td>boolean</td>
+                                <td>Include hashtags in output</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Example Request</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code>const response = await fetch('https://api.aistorystream.com/v1/generate', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    event_type: 'sports',
+    description: 'Game-winning touchdown in overtime',
+    style: 'dramatic',
+    length: 'medium',
+    language: 'en',
+    include_emojis: true,
+    include_hashtags: true
+  })
+});
+
+const data = await response.json();
+console.log(data.story);</code></pre>
+                    </div>
+
+                    <h3>Example Response</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code>{
+  "success": true,
+  "story": {
+    "id": "story_abc123",
+    "content": "🏆 In a breathtaking display...",
+    "word_count": 87,
+    "language": "en",
+    "style": "dramatic",
+    "created_at": "2025-10-29T13:30:00Z"
+  },
+  "usage": {
+    "credits_used": 2,
+    "credits_remaining": 998
+  }
+}</code></pre>
+                    </div>
+
+                    <h2 id="translate">Translate Story</h2>
+                    <p>Translate existing stories to different languages.</p>
+
+                    <div class="endpoint">
+                        <span class="method post">POST</span>
+                        <code>/v1/translate</code>
+                    </div>
+
+                    <h3>Request Parameters</h3>
+                    <table class="param-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>story_id</code><span class="required-badge">Required</span></td>
+                                <td>string</td>
+                                <td>ID of the story to translate</td>
+                            </tr>
+                            <tr>
+                                <td><code>target_language</code><span class="required-badge">Required</span></td>
+                                <td>string</td>
+                                <td>Target language code (es, fr, de, etc.)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Example Request</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code>curl -X POST https://api.aistorystream.com/v1/translate \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "story_id": "story_abc123",
+    "target_language": "es"
+  }'</code></pre>
+                    </div>
+
+                    <h2 id="analyze">Analyze Content</h2>
+                    <p>Analyze story content for sentiment, engagement score, and keywords.</p>
+
+                    <div class="endpoint">
+                        <span class="method post">POST</span>
+                        <code>/v1/analyze</code>
+                    </div>
+
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code>{
+  "success": true,
+  "analysis": {
+    "sentiment": "positive",
+    "sentiment_score": 0.85,
+    "engagement_score": 92,
+    "keywords": ["championship", "victory", "exciting"],
+    "readability_score": 78,
+    "emotion": "excitement"
+  }
+}</code></pre>
+                    </div>
+
+                    <h2 id="webhooks">Webhooks</h2>
+                    <p>Set up webhooks to receive real-time notifications when stories are generated.</p>
+
+                    <h3>Configure Webhook</h3>
+                    <div class="endpoint">
+                        <span class="method post">POST</span>
+                        <code>/v1/webhooks</code>
+                    </div>
+
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code>{
+  "url": "https://your-domain.com/webhook",
+  "events": ["story.generated", "story.translated"],
+  "secret": "your_webhook_secret"
+}</code></pre>
+                    </div>
+
+                    <h2 id="rate-limits">Rate Limits</h2>
+                    <p>API rate limits vary by plan:</p>
+                    <table class="param-table">
+                        <thead>
+                            <tr>
+                                <th>Plan</th>
+                                <th>Requests per Minute</th>
+                                <th>Daily Limit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Free</td>
+                                <td>10</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td>Basic</td>
+                                <td>30</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>Pro</td>
+                                <td>60</td>
+                                <td>1,000</td>
+                            </tr>
+                            <tr>
+                                <td>Enterprise</td>
+                                <td>Unlimited</td>
+                                <td>Unlimited</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h2 id="errors">Error Handling</h2>
+                    <p>The API uses standard HTTP status codes:</p>
+                    <table class="param-table">
+                        <thead>
+                            <tr>
+                                <th>Status Code</th>
+                                <th>Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>200</td>
+                                <td>Success</td>
+                            </tr>
+                            <tr>
+                                <td>400</td>
+                                <td>Bad Request - Invalid parameters</td>
+                            </tr>
+                            <tr>
+                                <td>401</td>
+                                <td>Unauthorized - Invalid API key</td>
+                            </tr>
+                            <tr>
+                                <td>429</td>
+                                <td>Too Many Requests - Rate limit exceeded</td>
+                            </tr>
+                            <tr>
+                                <td>500</td>
+                                <td>Internal Server Error</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Error Response Example</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code>{
+  "success": false,
+  "error": {
+    "code": "invalid_parameter",
+    "message": "The 'event_type' parameter is required",
+    "param": "event_type"
+  }
+}</code></pre>
+                    </div>
+
+                    <h2 id="sdks">SDKs & Libraries</h2>
+                    <p>We offer official SDKs for popular programming languages:</p>
+
+                    <h3>JavaScript/Node.js</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code>npm install @aistorystream/sdk
+
+const AIStoryStream = require('@aistorystream/sdk');
+const client = new AIStoryStream('YOUR_API_KEY');
+
+const story = await client.generate({
+  event_type: 'sports',
+  description: 'Championship goal',
+  style: 'dramatic'
+});</code></pre>
+                    </div>
+
+                    <h3>Python</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code>pip install aistorystream
+
+from aistorystream import Client
+
+client = Client(api_key='YOUR_API_KEY')
+story = client.generate(
+    event_type='sports',
+    description='Championship goal',
+    style='dramatic'
+)</code></pre>
+                    </div>
+
+                    <h3>PHP</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        <pre><code>composer require aistorystream/php-sdk
+
+use AIStoryStreamClient;
+
+$client = new Client('YOUR_API_KEY');
+$story = $client->generate([
+    'event_type' => 'sports',
+    'description' => 'Championship goal',
+    'style' => 'dramatic'
+]);</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Logo">
+                        <span>AI StoryStream</span>
+                    </div>
+                    <p>Empowering content creators with AI-powered storytelling for live streaming events.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="generator.html">Live Generator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI StoryStream. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant</span>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    Hello! Need help with the API? I'm here to assist!
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chatbotInput"></label><input type="text" id="chatbotInput" placeholder="Type your message...">
+            <button id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+    <script>
+        function copyCode(btn) {
+            const codeBlock = btn.nextElementSibling;
+            const code = codeBlock.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('.api-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>

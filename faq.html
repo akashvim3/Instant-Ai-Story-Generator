@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | AI StoryStream</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .faq-hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            text-align: center;
+            color: var(--white);
+        }
+        .faq-hero h1 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        .faq-hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+        }
+        .faq-section {
+            padding: 80px 0;
+        }
+        .faq-categories {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        .faq-category-btn {
+            padding: 12px 24px;
+            border: 2px solid var(--border-color);
+            background: var(--white);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        .faq-category-btn:hover,
+        .faq-category-btn.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-group {
+            margin-bottom: 3rem;
+        }
+        .faq-group h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--light-sky);
+        }
+        .faq-question:hover {
+            background: var(--sky-blue);
+        }
+        .faq-question h4 {
+            margin: 0;
+            color: var(--text-dark);
+            flex: 1;
+        }
+        .faq-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+        .faq-answer p {
+            margin: 0;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        .faq-answer ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+        .search-faq {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+        .search-faq input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 1rem;
+        }
+        .search-faq button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            border: none;
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="AI Story Generator Logo">
+                    <span>AI Story<span class="highlight">Stream</span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="generator.html">Live Generator</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button class="btn-secondary">Sign In</button>
+                    <button class="btn-primary">Get Started</button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FAQ Hero -->
+    <section class="faq-hero">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find quick answers to common questions about AI StoryStream</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="search-faq">
+                <label for="faqSearch"></label><input type="text" id="faqSearch" placeholder="Search for answers...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="faq-categories">
+                <button class="faq-category-btn active" data-category="all">All Questions</button>
+                <button class="faq-category-btn" data-category="general">General</button>
+                <button class="faq-category-btn" data-category="features">Features</button>
+                <button class="faq-category-btn" data-category="pricing">Pricing</button>
+                <button class="faq-category-btn" data-category="technical">Technical</button>
+                <button class="faq-category-btn" data-category="account">Account</button>
+            </div>
+
+            <div class="faq-container">
+                <!-- General Questions -->
+                <div class="faq-group" data-category="general">
+                    <h2><i class="fas fa-info-circle"></i> General Questions</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What is AI StoryStream?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>AI StoryStream is an advanced AI-powered platform that generates compelling stories, captions, and narratives for live streaming events in real-time. Using state-of-the-art natural language processing, we help content creators, streamers, and journalists create engaging content instantly.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Who can benefit from AI StoryStream?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our platform is perfect for:</p>
+                            <ul>
+                                <li>Live streamers and content creators</li>
+                                <li>Sports commentators and journalists</li>
+                                <li>Event organizers and marketers</li>
+                                <li>Social media managers</li>
+                                <li>Gaming streamers</li>
+                                <li>Concert and entertainment venues</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>How does the AI work?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our AI uses advanced transformer-based language models trained on vast amounts of text data. When you provide an event description, the AI analyzes the context, understands the tone and style you want, and generates a relevant, engaging narrative that matches your specifications.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features Questions -->
+                <div class="faq-group" data-category="features">
+                    <h2><i class="fas fa-star"></i> Features & Capabilities</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What writing styles are available?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer multiple writing styles including:</p>
+                            <ul>
+                                <li>Dramatic - High energy and emotional</li>
+                                <li>Humorous - Light-hearted and funny</li>
+                                <li>Professional - Formal and informative</li>
+                                <li>Casual - Friendly and relaxed</li>
+                                <li>Inspirational - Motivating and uplifting</li>
+                                <li>Suspenseful - Building tension and excitement</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>How many languages do you support?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We support 50+ languages including English, Spanish, French, German, Italian, Portuguese, Japanese, Korean, Chinese, Hindi, Arabic, Russian, and many more. The AI generates native-quality content in each language.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What is auto-generation mode?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Auto-generation mode automatically creates stories at regular intervals (every 30 seconds by default) during your live stream. Perfect for continuous coverage of ongoing events without manual intervention.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Can I export generated stories?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! You can export stories in multiple formats including TXT, JSON, and CSV. You can also copy individual stories to clipboard or download them directly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Questions -->
+                <div class="faq-group" data-category="pricing">
+                    <h2><i class="fas fa-dollar-sign"></i> Pricing & Plans</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Is there a free plan?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We offer a free plan with 10,000 words per month (approximately 20 stories). It's perfect for testing our platform. We also offer a 14-day free trial of our paid plans with no credit card required.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What are your paid plans?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer three paid plans:</p>
+                            <ul>
+                                <li><strong>Basic:</strong> $9.99/month - 200,000 words, all styles, 10 languages</li>
+                                <li><strong>Pro:</strong> $29.99/month - 1M words, all features, 50+ languages, API access</li>
+                                <li><strong>Enterprise:</strong> Custom pricing - Unlimited usage, white-label, dedicated support</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Can I change plans anytime?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! You can upgrade, downgrade, or cancel your plan at any time from your account settings. Upgrades take effect immediately, while downgrades take effect at the end of your current billing cycle.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What payment methods do you accept?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, and bank transfers for Enterprise plans. All payments are processed securely through Stripe.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Do you offer refunds?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer a 14-day free trial, so you can test our service risk-free. After the trial, payments are non-refundable, but you can cancel anytime to avoid future charges.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Questions -->
+                <div class="faq-group" data-category="technical">
+                    <h2><i class="fas fa-cogs"></i> Technical Questions</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Do you have an API?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! Pro and Enterprise plans include API access. Our RESTful API allows you to integrate AI story generation into your own applications. We provide comprehensive documentation and SDKs for JavaScript, Python, and PHP.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What are the API rate limits?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Rate limits vary by plan:</p>
+                            <ul>
+                                <li>Pro: 1,000 API calls per day, 60 requests per minute</li>
+                                <li>Enterprise: Unlimited API calls and custom rate limits</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Is my data secure?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We take security seriously. All data is encrypted in transit using TLS/SSL and at rest using AES-256 encryption. We perform regular security audits and comply with GDPR, CCPA, and other privacy regulations.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Can I integrate with my streaming platform?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! Our API makes it easy to integrate with popular streaming platforms like YouTube Live, Twitch, Facebook Live, and custom RTMP streams. We also offer webhooks for real-time notifications.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What browsers do you support?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our platform works on all modern browsers including Chrome 90+, Firefox 88+, Safari 14+, and Edge 90+. We also have a fully responsive design that works perfectly on mobile devices.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Questions -->
+                <div class="faq-group" data-category="account">
+                    <h2><i class="fas fa-user"></i> Account Management</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>How do I create an account?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Simply click "Get Started" or "Sign Up" and provide your email address and password. You can also sign up using your Google or GitHub account for faster registration.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Can I share my account with team members?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Pro plans include 3 team seats, and Enterprise plans offer unlimited seats. Each team member gets their own login credentials while sharing the same subscription and usage limits.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>How do I reset my password?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Click "Forgot Password" on the login page, enter your email address, and we'll send you a secure reset link. The link expires after 1 hour for security.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>How do I delete my account?</h4>
+                            <div class="faq-icon"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can delete your account from Account Settings > Delete Account. This will permanently delete all your data after a 30-day grace period. You can cancel the deletion during this period.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Still Have Questions CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Still Have Questions?</h2>
+                <p>Can't find what you're looking for? Our support team is here to help!</p>
+                <button class="btn-large btn-white" onclick="window.location.href='contact.html'">
+                    Contact Support <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Logo">
+                        <span>AI StoryStream</span>
+                    </div>
+                    <p>Empowering content creators with AI-powered storytelling for live streaming events.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="generator.html">Live Generator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI StoryStream. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant</span>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    Hello! Looking for answers? I can help you find what you need!
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chatbotInput"></label><input type="text" id="chatbotInput" placeholder="Type your message...">
+            <button id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+    <script>
+        // FAQ accordion functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // FAQ category filtering
+        const categoryBtns = document.querySelectorAll('.faq-category-btn');
+        const faqGroups = document.querySelectorAll('.faq-group');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const category = btn.dataset.category;
+
+                faqGroups.forEach(group => {
+                    if (category === 'all' || group.dataset.category === category) {
+                        group.style.display = 'block';
+                    } else {
+                        group.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // FAQ search functionality
+        const searchInput = document.getElementById('faqSearch');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('h4').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Show all groups when searching
+            if (searchTerm) {
+                faqGroups.forEach(group => group.style.display = 'block');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | AI StoryStream</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            text-align: center;
+            color: var(--white);
+        }
+        .blog-hero h1 {
+            color: var(--white);
+        }
+        .blog-hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+        }
+        .blog-section {
+            padding: 80px 0;
+        }
+        .blog-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .blog-filters button {
+            padding: 10px 24px;
+            border: 2px solid var(--border-color);
+            background: var(--white);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        .blog-filters button:hover,
+        .blog-filters button.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        .blog-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        .blog-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .blog-content {
+            padding: 1.5rem;
+        }
+        .blog-category {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .blog-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        .blog-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .author-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+        }
+        .featured-post {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 3rem;
+        }
+        .featured-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .featured-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .featured-badge {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            width: fit-content;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="AI Story Generator Logo">
+                    <span>AI Story<span class="highlight">Stream</span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="generator.html">Live Generator</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button class="btn-secondary">Sign In</button>
+                    <button class="btn-primary">Get Started</button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Blog & Resources</h1>
+            <p>Tips, tutorials, and insights on AI storytelling and content creation</p>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-filters">
+                <button class="active" data-filter="all">All Posts</button>
+                <button data-filter="tutorials">Tutorials</button>
+                <button data-filter="ai">AI & Technology</button>
+                <button data-filter="content">Content Strategy</button>
+                <button data-filter="tips">Tips & Tricks</button>
+                <button data-filter="updates">Product Updates</button>
+            </div>
+
+            <div class="blog-grid">
+                <!-- Featured Post -->
+                <div class="featured-post">
+                    <img src="assets/images/hero-bg.png" alt="Featured Post" class="featured-image">
+                    <div class="featured-content">
+                        <span class="featured-badge">Featured</span>
+                        <span class="blog-category">AI & Technology</span>
+                        <h2 class="blog-title">The Future of AI-Powered Storytelling in Live Streaming</h2>
+                        <p class="blog-excerpt">Explore how artificial intelligence is transforming the way we create and consume stories in real-time. From sports commentary to concert captions, AI is revolutionizing live content creation.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">SJ</div>
+                                <span>Sarah Johnson • Oct 28, 2025</span>
+                            </div>
+                            <span><i class="fas fa-clock"></i> 8 min read</span>
+                        </div>
+                        <button class="btn-primary" style="margin-top: 1.5rem; width: fit-content;">Read More</button>
+                    </div>
+                </div>
+
+                <!-- Blog Posts -->
+                <div class="blog-card" data-category="tutorials">
+                    <img src="assets/images/feature-1.png" alt="Blog Post" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">Tutorials</span>
+                        <h3 class="blog-title">Getting Started with AI Story Generation</h3>
+                        <p class="blog-excerpt">A complete beginner's guide to using AI StoryStream for your live streaming events. Learn the basics and best practices.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">MC</div>
+                                <span>Michael Chen</span>
+                            </div>
+                            <span><i class="fas fa-clock"></i> 5 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card" data-category="content">
+                    <img src="assets/images/feature-2.png" alt="Blog Post" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">Content Strategy</span>
+                        <h3 class="blog-title">10 Ways to Boost Engagement with AI-Generated Stories</h3>
+                        <p class="blog-excerpt">Proven strategies to increase audience engagement using AI-powered storytelling techniques for your live streams.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">EW</div>
+                                <span>Emma Williams</span>
+                            </div>
+                            <span><i class="fas fa-clock"></i> 6 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card" data-category="tips">
+                    <img src="assets/images/feature-3.png" alt="Blog Post" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">Tips & Tricks</span>
+                        <h3 class="blog-title">Choosing the Right Story Style for Your Audience</h3>
+                        <p class="blog-excerpt">Learn how to select the perfect writing style and tone to resonate with your specific audience demographic.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">DM</div>
+                                <span>David Martinez</span>
+                            </div>
+                            <span><i class="fas fa-clock"></i> 4 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card" data-category="ai">
+                    <img src="assets/images/live-stream.png" alt="Blog Post" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">AI & Technology</span>
+                        <h3 class="blog-title">Understanding Natural Language Processing in Story Generation</h3>
+                        <p class="blog-excerpt">Dive deep into the technology behind AI StoryStream and how NLP models create compelling narratives.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">SJ</div>
+                                <span>Sarah Johnson</span>
+                            </div>
+                            <span><i class="fas fa-clock"></i> 10 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card" data-category="updates">
+                    <img src="assets/images/feature-1.png" alt="Blog Post" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">Product Updates</span>
+                        <h3 class="blog-title">New Feature: Auto-Generation Mode for Live Streams</h3>
+                        <p class="blog-excerpt">Introducing our newest feature that automatically generates stories every 30 seconds during your live events.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">MC</div>
+                                <span>Michael Chen</span>
+                            </div>
+                            <span><i class="fas fa-clock"></i> 3 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card" data-category="tutorials">
+                    <img src="assets/images/feature-2.png" alt="Blog Post" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">Tutorials</span>
+                        <h3 class="blog-title">API Integration: Building Custom Applications</h3>
+                        <p class="blog-excerpt">Step-by-step guide to integrating AI StoryStream API into your own applications and platforms.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">EW</div>
+                                <span>Emma Williams</span>
+                            </div>
+                            <span><i class="fas fa-clock"></i> 12 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card" data-category="content">
+                    <img src="assets/images/feature-3.png" alt="Blog Post" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">Content Strategy</span>
+                        <h3 class="blog-title">Multi-Language Storytelling: Reaching Global Audiences</h3>
+                        <p class="blog-excerpt">Best practices for creating stories in multiple languages to expand your international reach.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">DM</div>
+                                <span>David Martinez</span>
+                            </div>
+                            <span><i class="fas fa-clock"></i> 7 min</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-card" data-category="tips">
+                    <img src="assets/images/live-stream.png" alt="Blog Post" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">Tips & Tricks</span>
+                        <h3 class="blog-title">Optimizing Stories for Social Media Platforms</h3>
+                        <p class="blog-excerpt">Format and optimize your AI-generated stories for maximum impact on Twitter, Instagram, and Facebook.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">SJ</div>
+                                <span>Sarah Johnson</span>
+                            </div>
+                            <span><i class="fas fa-clock"></i> 5 min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="btn-outline btn-large">Load More Posts</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest tips, tutorials, and updates delivered to your inbox</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+                    <label>
+                        <input type="email" placeholder="Enter your email" style="padding: 15px 25px; border-radius: 8px; border: none; width: 350px; max-width: 100%;">
+                    </label>
+                    <button class="btn-large btn-white">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Logo">
+                        <span>AI StoryStream</span>
+                    </div>
+                    <p>Empowering content creators with AI-powered storytelling for live streaming events.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="generator.html">Live Generator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI StoryStream. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant</span>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    Hello! Looking for specific content? I can help you find articles!
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chatbotInput"></label><input type="text" id="chatbotInput" placeholder="Type your message...">
+            <button id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+    <script>
+        // Blog filtering
+        const filterBtns = document.querySelectorAll('.blog-filters button');
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                blogCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

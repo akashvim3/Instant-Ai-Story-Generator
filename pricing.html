@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans | AI StoryStream</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pricing-hero {
+            padding: 80px 0 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            text-align: center;
+            color: var(--white);
+        }
+        .pricing-hero h1 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        .pricing-hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .billing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .toggle-switch.active {
+            background: var(--primary-color);
+        }
+        .toggle-slider {
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            background: var(--white);
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: var(--transition);
+        }
+        .toggle-switch.active .toggle-slider {
+            left: 32px;
+        }
+        .savings-badge {
+            background: var(--success);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .pricing-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            position: relative;
+            border: 3px solid transparent;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        .pricing-card.featured {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .plan-price span {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+        .plan-description {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            min-height: 50px;
+        }
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        .plan-features li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        .plan-features i {
+            color: var(--success);
+            font-size: 1.1rem;
+        }
+        .plan-features .disabled {
+            color: var(--text-gray);
+            opacity: 0.5;
+        }
+        .plan-features .disabled i {
+            color: var(--text-gray);
+        }
+        .comparison-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        .comparison-table {
+            overflow-x: auto;
+            margin-top: 3rem;
+        }
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        .comparison-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .comparison-table tr:hover {
+            background: var(--light-sky);
+        }
+        .check-icon {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+        .cross-icon {
+            color: var(--text-gray);
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="AI Story Generator Logo">
+                    <span>AI Story<span class="highlight">Stream</span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="generator.html">Live Generator</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button class="btn-secondary">Sign In</button>
+                    <button class="btn-primary">Get Started</button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pricing Hero -->
+    <section class="pricing-hero">
+        <div class="container">
+            <h1>Simple, Transparent Pricing</h1>
+            <p>Choose the perfect plan for your content creation needs. All plans include a 14-day free trial.</p>
+
+            <div class="billing-toggle">
+                <span style="color: rgba(255,255,255,0.9);">Monthly</span>
+                <div class="toggle-switch" id="billingToggle">
+                    <div class="toggle-slider"></div>
+                </div>
+                <span style="color: rgba(255,255,255,0.9);">Annually</span>
+                <span class="savings-badge">Save 20%</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section style="padding: 80px 0; background: var(--light-sky);">
+        <div class="container">
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Free</h3>
+                    <div class="plan-price">$0<span>/month</span></div>
+                    <p class="plan-description">Perfect for testing and personal projects</p>
+                    <button class="btn-outline btn-block">Get Started</button>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 20 credits per month (10,000 words)</li>
+                        <li><i class="fas fa-check"></i> 5 story generations per day</li>
+                        <li><i class="fas fa-check"></i> 3 writing styles</li>
+                        <li><i class="fas fa-check"></i> Basic analytics</li>
+                        <li><i class="fas fa-check"></i> Export to TXT</li>
+                        <li><i class="fas fa-check"></i> Community support</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Auto-generation mode</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Multi-language support</li>
+                        <li class="disabled"><i class="fas fa-times"></i> API access</li>
+                    </ul>
+                </div>
+
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Basic</h3>
+                    <div class="plan-price">
+                        <span id="basicPrice">$9.99</span><span>/month</span>
+                    </div>
+                    <p class="plan-description">Great for individual content creators and streamers</p>
+                    <button class="btn-primary btn-block">Start Free Trial</button>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 400 credits per month (200,000 words)</li>
+                        <li><i class="fas fa-check"></i> Unlimited generations</li>
+                        <li><i class="fas fa-check"></i> All writing styles</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics</li>
+                        <li><i class="fas fa-check"></i> Export to TXT, JSON, CSV</li>
+                        <li><i class="fas fa-check"></i> Email support</li>
+                        <li><i class="fas fa-check"></i> Auto-generation mode</li>
+                        <li><i class="fas fa-check"></i> 10 languages</li>
+                        <li class="disabled"><i class="fas fa-times"></i> API access</li>
+                    </ul>
+                </div>
+
+                <!-- Pro Plan (Featured) -->
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <h3 class="plan-name">Pro</h3>
+                    <div class="plan-price">
+                        <span id="proPrice">$29.99</span><span>/month</span>
+                    </div>
+                    <p class="plan-description">Perfect for professional streamers and agencies</p>
+                    <button class="btn-primary btn-block">Start Free Trial</button>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> 2,000 credits per month (1M words)</li>
+                        <li><i class="fas fa-check"></i> Unlimited generations</li>
+                        <li><i class="fas fa-check"></i> All premium features</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics + insights</li>
+                        <li><i class="fas fa-check"></i> All export formats</li>
+                        <li><i class="fas fa-check"></i> Priority support (24/7)</li>
+                        <li><i class="fas fa-check"></i> Advanced auto-generation</li>
+                        <li><i class="fas fa-check"></i> 50+ languages</li>
+                        <li><i class="fas fa-check"></i> Basic API access (1,000 calls/day)</li>
+                        <li><i class="fas fa-check"></i> Custom style training</li>
+                        <li><i class="fas fa-check"></i> Team collaboration (3 seats)</li>
+                    </ul>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Enterprise</h3>
+                    <div class="plan-price">Custom</div>
+                    <p class="plan-description">For large teams and organizations with custom needs</p>
+                    <button class="btn-outline btn-block">Contact Sales</button>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Unlimited credits & generations</li>
+                        <li><i class="fas fa-check"></i> White-label solution</li>
+                        <li><i class="fas fa-check"></i> Custom integrations</li>
+                        <li><i class="fas fa-check"></i> Dedicated analytics dashboard</li>
+                        <li><i class="fas fa-check"></i> All export formats + custom</li>
+                        <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                        <li><i class="fas fa-check"></i> Priority processing</li>
+                        <li><i class="fas fa-check"></i> All languages + custom</li>
+                        <li><i class="fas fa-check"></i> Unlimited API access</li>
+                        <li><i class="fas fa-check"></i> Custom AI model training</li>
+                        <li><i class="fas fa-check"></i> Unlimited team seats</li>
+                        <li><i class="fas fa-check"></i> SLA guarantee</li>
+                        <li><i class="fas fa-check"></i> On-premise deployment option</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Detailed Feature Comparison</h2>
+                <p>Compare all features across our plans</p>
+            </div>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Free</th>
+                            <th>Basic</th>
+                            <th>Pro</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Monthly Word Credits</strong></td>
+                            <td>10,000</td>
+                            <td>200,000</td>
+                            <td>1,000,000</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Story Generations</strong></td>
+                            <td>5 per day</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Writing Styles</strong></td>
+                            <td>3 Basic</td>
+                            <td>All 10+</td>
+                            <td>All + Custom</td>
+                            <td>All + Custom</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Languages</strong></td>
+                            <td>English Only</td>
+                            <td>10 Languages</td>
+                            <td>50+ Languages</td>
+                            <td>All + Custom</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Auto-Generation</strong></td>
+                            <td><i class="fas fa-times cross-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Export Formats</strong></td>
+                            <td>TXT</td>
+                            <td>TXT, JSON, CSV</td>
+                            <td>All Formats</td>
+                            <td>All + Custom</td>
+                        </tr>
+                        <tr>
+                            <td><strong>API Access</strong></td>
+                            <td><i class="fas fa-times cross-icon"></i></td>
+                            <td><i class="fas fa-times cross-icon"></i></td>
+                            <td>1,000 calls/day</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Analytics</strong></td>
+                            <td>Basic</td>
+                            <td>Advanced</td>
+                            <td>Advanced + Insights</td>
+                            <td>Dedicated Dashboard</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Team Seats</strong></td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Support</strong></td>
+                            <td>Community</td>
+                            <td>Email</td>
+                            <td>Priority 24/7</td>
+                            <td>Dedicated Manager</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Custom Training</strong></td>
+                            <td><i class="fas fa-times cross-icon"></i></td>
+                            <td><i class="fas fa-times cross-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td><strong>White Label</strong></td>
+                            <td><i class="fas fa-times cross-icon"></i></td>
+                            <td><i class="fas fa-times cross-icon"></i></td>
+                            <td><i class="fas fa-times cross-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Pricing FAQs</h2>
+                <p>Common questions about our pricing</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Is there a free trial?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All paid plans include a 14-day free trial with full access to all features. No credit card required to start.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can I change plans anytime?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! You can upgrade, downgrade, or cancel your plan at any time. Changes take effect immediately for upgrades, or at the end of your billing cycle for downgrades.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What happens if I exceed my credit limit?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You'll be notified when you reach 80% of your limit. You can purchase additional credits or upgrade to a higher plan. Your service won't be interrupted.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Do credits roll over?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pro and Enterprise plans include credit rollover for up to 3 months. Free and Basic plans reset monthly.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What payment methods do you accept?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and bank transfers for Enterprise plans.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Get Started?</h2>
+                <p>Start your 14-day free trial today. No credit card required.</p>
+                <button class="btn-large btn-white" onclick="window.location.href='generator.html'">
+                    Start Free Trial <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Logo">
+                        <span>AI StoryStream</span>
+                    </div>
+                    <p>Empowering content creators with AI-powered storytelling for live streaming events.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="generator.html">Live Generator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI StoryStream. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant</span>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    Hello! I'm your AI assistant. How can I help you with pricing today?
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chatbotInput"></label><input type="text" id="chatbotInput" placeholder="Type your message...">
+            <button id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+    <script>
+        // Billing toggle
+        const billingToggle = document.getElementById('billingToggle');
+        const basicPrice = document.getElementById('basicPrice');
+        const proPrice = document.getElementById('proPrice');
+
+        billingToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            if (this.classList.contains('active')) {
+                // Annual pricing (20% off)
+                basicPrice.textContent = '$7.99';
+                proPrice.textContent = '$23.99';
+            } else {
+                // Monthly pricing
+                basicPrice.textContent = '$9.99';
+                proPrice.textContent = '$29.99';
+            }
+        });
+    </script>
+</body>
+</html>

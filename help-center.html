@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center | AI StoryStream</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .help-hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            text-align: center;
+            color: var(--white);
+        }
+        .help-hero h1 {
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 18px 60px 18px 25px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-xl);
+        }
+        .search-box button {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            border: none;
+            color: var(--white);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .search-box button:hover {
+            background: var(--primary-dark);
+        }
+        .help-categories {
+            padding: 80px 0;
+            background: var(--light-sky);
+        }
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .category-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+        }
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .category-icon i {
+            color: var(--white);
+            font-size: 2.5rem;
+        }
+        .category-card h3 {
+            margin-bottom: 1rem;
+        }
+        .article-count {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+        .popular-articles {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        .articles-list {
+            margin-top: 3rem;
+        }
+        .article-item {
+            background: var(--light-sky);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .article-item:hover {
+            background: var(--sky-blue);
+            transform: translateX(10px);
+        }
+        .article-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .article-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+        .article-details h4 {
+            margin-bottom: 0.3rem;
+            color: var(--text-dark);
+        }
+        .article-details p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        .contact-support {
+            padding: 80px 0;
+            background: var(--light-sky);
+            text-align: center;
+        }
+        .support-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .support-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+        .support-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="AI Story Generator Logo">
+                    <span>AI Story<span class="highlight">Stream</span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="generator.html">Live Generator</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button class="btn-secondary">Sign In</button>
+                    <button class="btn-primary">Get Started</button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Help Hero -->
+    <section class="help-hero">
+        <div class="container">
+            <h1>How can we help you?</h1>
+            <div class="search-box">
+                <label>
+                    <input type="text" placeholder="Search for help articles...">
+                </label>
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Categories -->
+    <section class="help-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Browse by Category</h2>
+                <p>Find answers organized by topic</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Getting Started</h3>
+                    <p class="article-count">12 articles</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Story Generation</h3>
+                    <p class="article-count">18 articles</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Account Settings</h3>
+                    <p class="article-count">10 articles</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Billing & Plans</h3>
+                    <p class="article-count">15 articles</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>API & Integration</h3>
+                    <p class="article-count">22 articles</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security & Privacy</h3>
+                    <p class="article-count">8 articles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Articles -->
+    <section class="popular-articles">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Articles</h2>
+                <p>Most viewed help articles this week</p>
+            </div>
+            <div class="articles-list">
+                <div class="article-item">
+                    <div class="article-info">
+                        <div class="article-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="article-details">
+                            <h4>How to generate your first story</h4>
+                            <p>Step-by-step guide to creating AI-powered stories</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--text-gray);"></i>
+                </div>
+
+                <div class="article-item">
+                    <div class="article-info">
+                        <div class="article-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="article-details">
+                            <h4>Choosing the right writing style</h4>
+                            <p>Learn how to select the perfect style for your audience</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--text-gray);"></i>
+                </div>
+
+                <div class="article-item">
+                    <div class="article-info">
+                        <div class="article-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="article-details">
+                            <h4>Setting up auto-generation mode</h4>
+                            <p>Configure automatic story generation for live streams</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--text-gray);"></i>
+                </div>
+
+                <div class="article-item">
+                    <div class="article-info">
+                        <div class="article-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div class="article-details">
+                            <h4>Multi-language story generation</h4>
+                            <p>Generate stories in 50+ languages</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--text-gray);"></i>
+                </div>
+
+                <div class="article-item">
+                    <div class="article-info">
+                        <div class="article-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="article-details">
+                            <h4>Exporting and sharing stories</h4>
+                            <p>Download stories in multiple formats</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--text-gray);"></i>
+                </div>
+
+                <div class="article-item">
+                    <div class="article-info">
+                        <div class="article-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <div class="article-details">
+                            <h4>Getting your API key</h4>
+                            <p>Access API credentials for integration</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--text-gray);"></i>
+                </div>
+
+                <div class="article-item">
+                    <div class="article-info">
+                        <div class="article-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="article-details">
+                            <h4>Managing your subscription</h4>
+                            <p>Upgrade, downgrade, or cancel your plan</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--text-gray);"></i>
+                </div>
+
+                <div class="article-item">
+                    <div class="article-info">
+                        <div class="article-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="article-details">
+                            <h4>Understanding analytics dashboard</h4>
+                            <p>Track your story generation statistics</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--text-gray);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Support -->
+    <section class="contact-support">
+        <div class="container">
+            <div class="section-header">
+                <h2>Still Need Help?</h2>
+                <p>Our support team is here to assist you</p>
+            </div>
+            <div class="support-options">
+                <div class="support-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Live Chat</h3>
+                    <p>Chat with our support team in real-time</p>
+                    <button class="btn-primary" style="margin-top: 1rem;">Start Chat</button>
+                </div>
+                <div class="support-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Support</h3>
+                    <p>Get help via email within 24 hours</p>
+                    <button class="btn-primary" style="margin-top: 1rem;">Send Email</button>
+                </div>
+                <div class="support-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Documentation</h3>
+                    <p>Browse our comprehensive docs</p>
+                    <button class="btn-primary" style="margin-top: 1rem;">View Docs</button>
+                </div>
+                <div class="support-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Forum</h3>
+                    <p>Connect with other users</p>
+                    <button class="btn-primary" style="margin-top: 1rem;">Join Forum</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Logo">
+                        <span>AI StoryStream</span>
+                    </div>
+                    <p>Empowering content creators with AI-powered storytelling for live streaming events.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="generator.html">Live Generator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI StoryStream. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant</span>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    Hello! How can I help you today?
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chatbotInput"></label><input type="text" id="chatbotInput" placeholder="Type your message...">
+            <button id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | AI StoryStream</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .careers-hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            text-align: center;
+            color: var(--white);
+        }
+        .careers-hero h1 {
+            color: var(--white);
+        }
+        .careers-hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .perks-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        .perks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .perk-card {
+            background: var(--light-sky);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .perk-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .perk-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .perk-icon i {
+            color: var(--white);
+            font-size: 2rem;
+        }
+        .jobs-section {
+            padding: 80px 0;
+        }
+        .job-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--border-color);
+            background: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        .job-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            border-left: 4px solid var(--primary-color);
+        }
+        .job-card:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+        .job-title {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .job-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .job-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .job-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .job-tag {
+            background: var(--light-sky);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="AI Story Generator Logo">
+                    <span>AI Story<span class="highlight">Stream</span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="generator.html">Live Generator</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button class="btn-secondary">Sign In</button>
+                    <button class="btn-primary">Get Started</button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Careers Hero -->
+    <section class="careers-hero">
+        <div class="container">
+            <h1>Join Our Team</h1>
+            <p>Help us revolutionize storytelling with AI. We're building the future of content creation, and we want you to be part of it.</p>
+            <div style="margin-top: 2rem;">
+                <button class="btn-large btn-white" onclick="document.getElementById('openings').scrollIntoView({behavior: 'smooth'})">
+                    View Open Positions <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join Us -->
+    <section class="perks-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Join AI StoryStream?</h2>
+                <p>We offer an exceptional work environment and benefits package</p>
+            </div>
+            <div class="perks-grid">
+                <div class="perk-card">
+                    <div class="perk-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Health & Wellness</h3>
+                    <p>Comprehensive health, dental, and vision insurance for you and your family</p>
+                </div>
+                <div class="perk-card">
+                    <div class="perk-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Remote Work</h3>
+                    <p>Work from anywhere with flexible hours and unlimited PTO policy</p>
+                </div>
+                <div class="perk-card">
+                    <div class="perk-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Learning Budget</h3>
+                    <p>$3,000 annual budget for courses, conferences, and professional development</p>
+                </div>
+                <div class="perk-card">
+                    <div class="perk-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Equipment</h3>
+                    <p>Top-of-the-line MacBook Pro or laptop of your choice, plus accessories</p>
+                </div>
+                <div class="perk-card">
+                    <div class="perk-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Equity</h3>
+                    <p>Competitive salary plus equity options to share in our success</p>
+                </div>
+                <div class="perk-card">
+                    <div class="perk-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Team Events</h3>
+                    <p>Regular team building activities, offsites, and social events</p>
+                </div>
+                <div class="perk-card">
+                    <div class="perk-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3>Parental Leave</h3>
+                    <p>16 weeks fully paid parental leave for all new parents</p>
+                </div>
+                <div class="perk-card">
+                    <div class="perk-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Growth</h3>
+                    <p>Clear career paths with mentorship and promotion opportunities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Positions -->
+    <section class="jobs-section" id="openings">
+        <div class="container">
+            <div class="section-header">
+                <h2>Open Positions</h2>
+                <p>Find your perfect role and join our growing team</p>
+            </div>
+
+            <div class="job-filters">
+                <button class="filter-btn active" data-filter="all">All Positions</button>
+                <button class="filter-btn" data-filter="engineering">Engineering</button>
+                <button class="filter-btn" data-filter="product">Product</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="marketing">Marketing</button>
+                <button class="filter-btn" data-filter="sales">Sales</button>
+            </div>
+
+            <div class="jobs-list">
+                <!-- Engineering Jobs -->
+                <div class="job-card" data-category="engineering">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Senior AI/ML Engineer</h3>
+                            <div class="job-meta">
+                                <span><i class="fas fa-briefcase"></i> Full-time</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Remote (US)</span>
+                                <span><i class="fas fa-dollar-sign"></i> $150k - $200k</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary">Apply Now</button>
+                    </div>
+                    <p>We're seeking an experienced ML engineer to build and improve our AI story generation models. You'll work on NLP, transformer models, and scaling our infrastructure.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Python</span>
+                        <span class="job-tag">PyTorch</span>
+                        <span class="job-tag">NLP</span>
+                        <span class="job-tag">Transformers</span>
+                    </div>
+                </div>
+
+                <div class="job-card" data-category="engineering">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Full Stack Engineer</h3>
+                            <div class="job-meta">
+                                <span><i class="fas fa-briefcase"></i> Full-time</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Remote (Global)</span>
+                                <span><i class="fas fa-dollar-sign"></i> $120k - $160k</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary">Apply Now</button>
+                    </div>
+                    <p>Build and maintain our web platform, API, and internal tools. Work with React, Node.js, and modern web technologies to create exceptional user experiences.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">React</span>
+                        <span class="job-tag">Node.js</span>
+                        <span class="job-tag">TypeScript</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                </div>
+
+                <div class="job-card" data-category="engineering">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">DevOps Engineer</h3>
+                            <div class="job-meta">
+                                <span><i class="fas fa-briefcase"></i> Full-time</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Remote (EU/US)</span>
+                                <span><i class="fas fa-dollar-sign"></i> $130k - $170k</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary">Apply Now</button>
+                    </div>
+                    <p>Scale our infrastructure to handle millions of story generations. Work with Kubernetes, CI/CD pipelines, and cloud infrastructure.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Kubernetes</span>
+                        <span class="job-tag">Docker</span>
+                        <span class="job-tag">AWS</span>
+                        <span class="job-tag">Terraform</span>
+                    </div>
+                </div>
+
+                <!-- Product Jobs -->
+                <div class="job-card" data-category="product">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Product Manager</h3>
+                            <div class="job-meta">
+                                <span><i class="fas fa-briefcase"></i> Full-time</span>
+                                <span><i class="fas fa-map-marker-alt"></i> San Francisco, CA</span>
+                                <span><i class="fas fa-dollar-sign"></i> $140k - $180k</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary">Apply Now</button>
+                    </div>
+                    <p>Define product strategy and roadmap for our story generation platform. Work closely with engineering, design, and customers to build products users love.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Product Strategy</span>
+                        <span class="job-tag">Analytics</span>
+                        <span class="job-tag">User Research</span>
+                    </div>
+                </div>
+
+                <!-- Design Jobs -->
+                <div class="job-card" data-category="design">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Senior Product Designer</h3>
+                            <div class="job-meta">
+                                <span><i class="fas fa-briefcase"></i> Full-time</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Remote (US)</span>
+                                <span><i class="fas fa-dollar-sign"></i> $120k - $150k</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary">Apply Now</button>
+                    </div>
+                    <p>Create beautiful, intuitive interfaces for our platform. Lead design projects from concept to implementation with a focus on user experience.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Figma</span>
+                        <span class="job-tag">UI/UX</span>
+                        <span class="job-tag">Design Systems</span>
+                    </div>
+                </div>
+
+                <!-- Marketing Jobs -->
+                <div class="job-card" data-category="marketing">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Content Marketing Manager</h3>
+                            <div class="job-meta">
+                                <span><i class="fas fa-briefcase"></i> Full-time</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Remote (Global)</span>
+                                <span><i class="fas fa-dollar-sign"></i> $90k - $120k</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary">Apply Now</button>
+                    </div>
+                    <p>Create compelling content that educates and engages our audience. Manage our blog, social media, and content strategy.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Content Strategy</span>
+                        <span class="job-tag">SEO</span>
+                        <span class="job-tag">Social Media</span>
+                    </div>
+                </div>
+
+                <div class="job-card" data-category="marketing">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Growth Marketing Lead</h3>
+                            <div class="job-meta">
+                                <span><i class="fas fa-briefcase"></i> Full-time</span>
+                                <span><i class="fas fa-map-marker-alt"></i> San Francisco, CA</span>
+                                <span><i class="fas fa-dollar-sign"></i> $110k - $140k</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary">Apply Now</button>
+                    </div>
+                    <p>Drive user acquisition and retention through data-driven marketing campaigns. Experiment with new channels and optimize our funnel.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Growth Hacking</span>
+                        <span class="job-tag">Analytics</span>
+                        <span class="job-tag">A/B Testing</span>
+                    </div>
+                </div>
+
+                <!-- Sales Jobs -->
+                <div class="job-card" data-category="sales">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Enterprise Sales Executive</h3>
+                            <div class="job-meta">
+                                <span><i class="fas fa-briefcase"></i> Full-time</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Remote (US)</span>
+                                <span><i class="fas fa-dollar-sign"></i> $100k - $150k + Commission</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary">Apply Now</button>
+                    </div>
+                    <p>Build relationships with enterprise customers and close deals. Own the entire sales cycle from prospecting to closing.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">B2B Sales</span>
+                        <span class="job-tag">SaaS</span>
+                        <span class="job-tag">Salesforce</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Don't See Your Role?</h2>
+                <p>We're always looking for talented people. Send us your resume!</p>
+                <button class="btn-large btn-white" onclick="window.location.href='contact.html'">
+                    Get In Touch <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Logo">
+                        <span>AI StoryStream</span>
+                    </div>
+                    <p>Empowering content creators with AI-powered storytelling for live streaming events.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="api.html">API</a></li>
+                        <li><a href="generator.html">Live Generator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI StoryStream. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant</span>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    Hello! Looking for career opportunities? I can help you find the right role!
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chatbotInput"></label><input type="text" id="chatbotInput" placeholder="Type your message...">
+            <button id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+    <script>
+        // Job filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const jobCards = document.querySelectorAll('.job-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                jobCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

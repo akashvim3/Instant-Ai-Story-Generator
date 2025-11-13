@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Story Generator | AI StoryStream</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="AI Story Generator Logo">
+                    <span>AI Story<span class="highlight">Stream</span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="generator.html" class="active">Live Generator</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button class="btn-secondary">Sign In</button>
+                    <button class="btn-primary">Get Started</button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Generator Section -->
+    <section class="generator-section">
+        <div class="container">
+            <div class="generator-header">
+                <h1>Live Story Generator</h1>
+                <p>Create compelling stories and captions for your live streaming events in real-time</p>
+            </div>
+
+            <div class="generator-container">
+                <!-- Input Panel -->
+                <div class="generator-panel input-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-cog"></i> Configuration</h3>
+                    </div>
+                    <div class="panel-content">
+                        <div class="form-group">
+                            <label for="eventType">Event Type</label>
+                            <select id="eventType" class="form-control">
+                                <option value="">Select event type...</option>
+                                <option value="sports">Sports Event</option>
+                                <option value="concert">Concert/Music</option>
+                                <option value="gaming">Gaming Stream</option>
+                                <option value="news">Breaking News</option>
+                                <option value="conference">Conference/Seminar</option>
+                                <option value="wedding">Wedding/Celebration</option>
+                                <option value="cooking">Cooking Show</option>
+                                <option value="travel">Travel Vlog</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventDescription">Event Description</label>
+                            <textarea id="eventDescription" class="form-control" rows="3" placeholder="Describe what's happening in your live stream..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="storyStyle">Story Style</label>
+                            <select id="storyStyle" class="form-control">
+                                <option value="dramatic">Dramatic</option>
+                                <option value="humorous">Humorous</option>
+                                <option value="professional">Professional</option>
+                                <option value="casual">Casual</option>
+                                <option value="inspirational">Inspirational</option>
+                                <option value="suspenseful">Suspenseful</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="storyLength">Story Length</label>
+                            <select id="storyLength" class="form-control">
+                                <option value="short">Short (1-2 sentences)</option>
+                                <option value="medium">Medium (3-5 sentences)</option>
+                                <option value="long">Long (6-10 sentences)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="language">Language</label>
+                            <select id="language" class="form-control">
+                                <option value="en">English</option>
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                                <option value="it">Italian</option>
+                                <option value="pt">Portuguese</option>
+                                <option value="ja">Japanese</option>
+                                <option value="ko">Korean</option>
+                                <option value="zh">Chinese</option>
+                                <option value="hi">Hindi</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="includeEmojis">
+                                <span>Include Emojis</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="includeHashtags">
+                                <span>Include Hashtags</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additionalContext">Additional Context (Optional)</label>
+                            <textarea id="additionalContext" class="form-control" rows="2" placeholder="Add any specific details you want in the story..."></textarea>
+                        </div>
+
+                        <button class="btn-primary btn-large btn-block" id="generateBtn">
+                            <i class="fas fa-magic"></i> Generate Story
+                        </button>
+
+                        <button class="btn-outline btn-large btn-block" id="autoGenerateBtn">
+                            <i class="fas fa-sync-alt"></i> Auto-Generate (Every 30s)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Output Panel -->
+                <div class="generator-panel output-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-file-alt"></i> Generated Stories</h3>
+                        <div class="panel-actions">
+                            <button class="btn-icon" id="clearAllBtn" title="Clear All">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="panel-content" id="storiesContainer">
+                        <div class="empty-state">
+                            <i class="fas fa-wand-magic"></i>
+                            <p>Your generated stories will appear here</p>
+                            <small>Configure your settings and click "Generate Story" to begin</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Preview Section -->
+            <div class="live-preview-section">
+                <div class="section-header">
+                    <h2>Live Stream Preview</h2>
+                    <p>Simulate your live streaming event</p>
+                </div>
+                <div class="live-preview-container">
+                    <div class="video-placeholder">
+                        <i class="fas fa-video"></i>
+                        <p>Connect your stream or upload a video to preview</p>
+                        <button class="btn-primary">
+                            <i class="fas fa-upload"></i> Upload Video
+                        </button>
+                    </div>
+                    <div class="live-controls">
+                        <button class="control-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="time-display">0:00 / 0:00</div>
+                        <button class="control-btn">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Dashboard -->
+            <div class="stats-dashboard">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4 id="totalStories">0</h4>
+                        <p>Stories Generated</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4 id="avgTime">0.0s</h4>
+                        <p>Avg Generation Time</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4 id="totalWords">0</h4>
+                        <p>Total Words</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h4 id="favoriteCount">0</h4>
+                        <p>Favorites</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Logo">
+                        <span>AI StoryStream</span>
+                    </div>
+                    <p>Empowering content creators with AI-powered storytelling for live streaming events.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="generator.html">Live Generator</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="api.html">API Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI StoryStream. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant</span>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    Hello! I'm your AI assistant. How can I help you with story generation today?
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chatbotInput"></label><input type="text" id="chatbotInput" placeholder="Type your message...">
+            <button id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/generator.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+</body>
+</html>

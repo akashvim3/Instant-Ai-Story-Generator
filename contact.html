@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | AI StoryStream</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="AI Story Generator Logo">
+                    <span>AI Story<span class="highlight">Stream</span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="generator.html">Live Generator</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button class="btn-secondary">Sign In</button>
+                    <button class="btn-primary">Get Started</button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Get In Touch</h1>
+            <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    <p>Fill out the form and our team will get back to you within 24 hours.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>support@aistorystream.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Office</h4>
+                                <p>123 AI Street, Tech Valley<br>XYZ, CA 94102</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Working Hours</h4>
+                                <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat - Sun: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-connect">
+                        <h4>Connect With Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="">Select a subject...</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="sales">Sales Question</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" class="form-control" rows="6" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter">
+                                <span>Subscribe to our newsletter for updates and tips</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-large btn-block">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+
+                    <div class="form-success" id="formSuccess" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Message Sent Successfully!</h3>
+                        <p>Thank you for contacting us. We'll get back to you soon.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How does the AI story generator work?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our AI uses advanced natural language processing to analyze your live stream content and generate contextually relevant stories and captions in real-time.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What streaming platforms are supported?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We support all major streaming platforms including YouTube Live, Twitch, Facebook Live, and custom RTMP streams.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Is there a free trial available?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer a 14-day free trial with full access to all features. No credit card required.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can I customize the story style?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Choose from multiple pre-built styles or create your own custom style profile to match your brand voice.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Logo">
+                        <span>AI StoryStream</span>
+                    </div>
+                    <p>Empowering content creators with AI-powered storytelling for live streaming events.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="generator.html">Live Generator</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="api.html">API Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI StoryStream. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant</span>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    Hello! I'm your AI assistant. How can I help you with story generation today?
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chatbotInput"></label><input type="text" id="chatbotInput" placeholder="Type your message...">
+            <button id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+</body>
+</html>

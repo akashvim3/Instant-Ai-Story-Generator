@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Instant AI Story Generator for Live Streaming - Creates engaging short stories and captions for ongoing events in real-time">
+    <title>Instant AI Story Generator | Live Event Storytelling</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="AI Story Generator Logo">
+                    <span>AI Story<span class="highlight">Stream</span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="generator.html">Live Generator</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <button class="btn-secondary">Sign In</button>
+                    <button class="btn-primary">Get Started</button>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-text">
+                    <h1 class="animate-fade-in">Transform Live Moments into <span class="gradient-text">Captivating Stories</span></h1>
+                    <p class="hero-subtitle">AI-powered real-time story and caption generation for your live streaming events. Engage your audience with compelling narratives as events unfold.</p>
+                    <div class="hero-buttons">
+                        <button class="btn-large btn-primary" onclick="window.location.href='generator.html'">
+                            <i class="fas fa-play"></i> Start Generating
+                        </button>
+                        <button class="btn-large btn-outline">
+                            <i class="fas fa-video"></i> Watch Demo
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <h3><span class="counter" data-target="50000">0</span>+</h3>
+                            <p>Stories Generated</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3><span class="counter" data-target="10000">0</span>+</h3>
+                            <p>Active Users</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3><span class="counter" data-target="99">0</span>%</h3>
+                            <p>Satisfaction Rate</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/images/hero-bg.png" alt="Live Streaming AI Story Generation" class="floating">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-brain"></i>
+                        <span>AI Powered</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-bolt"></i>
+                        <span>Real-time</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-stream"></i>
+                        <span>Live Streaming</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Overview -->
+    <section class="features-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose AI StoryStream?</h2>
+                <p>Powerful features designed for modern content creators and live streamers</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Instant Generation</h3>
+                    <p>Generate engaging stories and captions in milliseconds as your live event unfolds</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Intelligence</h3>
+                    <p>Advanced natural language processing creates contextually relevant narratives</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Real-Time Sync</h3>
+                    <p>Seamlessly synchronizes with your live stream for perfect timing</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Multiple Styles</h3>
+                    <p>Choose from various writing styles: dramatic, humorous, professional, or casual</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Multi-Language</h3>
+                    <p>Support for 50+ languages to reach global audiences</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Track engagement metrics and optimize your content strategy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Simple, fast, and powerful - start generating stories in three easy steps</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Connect Your Stream</h3>
+                        <p>Link your live stream source or input event details manually</p>
+                        <img src="assets/images/feature-1.png" alt="Connect Stream">
+                    </div>
+                </div>
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>AI Analyzes & Creates</h3>
+                        <p>Our AI processes the event and generates compelling narratives</p>
+                        <img src="assets/images/feature-2.png" alt="AI Processing">
+                    </div>
+                </div>
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Get Instant Results</h3>
+                        <p>Receive engaging stories and captions ready to share</p>
+                        <img src="assets/images/feature-3.png" alt="Results">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Live Streams?</h2>
+                <p>Join thousands of content creators using AI to engage their audiences</p>
+                <button class="btn-large btn-white" onclick="window.location.href='generator.html'">
+                    Start Creating Now <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Logo">
+                        <span>AI StoryStream</span>
+                    </div>
+                    <p>Empowering content creators with AI-powered storytelling for live streaming events.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="generator.html">Live Generator</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="api.html">API Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI StoryStream. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant</span>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    Hello! I'm your AI assistant. How can I help you with story generation today?
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <label for="chatbotInput"></label><input type="text" id="chatbotInput" placeholder="Type your message...">
+            <button id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    <button class="chatbot-toggle" id="chatbotToggle">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+</body>
+</html>
