@@ -225,7 +225,7 @@ function generateStoryContent(config) {
     // Add context from description
     if (config.eventDescription) {
         const contextSnippet = ` ${config.eventDescription.substring(0, 100)}`;
-        baseStory = baseStory.replace(/!$/, ` - ${contextSnippet}!`);
+        baseStory = baseStory.replace(/(!|\.)$/, ` - ${contextSnippet}$1`);
     }
 
     // Adjust length
@@ -238,9 +238,7 @@ function generateStoryContent(config) {
     // Add hashtags if requested
     if (config.includeHashtags) {
         const hashtags = generateHashtags(eventType);
-        baseStory += '
-
-' + hashtags;
+        baseStory += '\n\n' + hashtags;
     }
 
     // Add additional emojis if requested
@@ -339,7 +337,7 @@ function toggleFavorite(storyId) {
         story.isFavorite = !story.isFavorite;
         const btn = document.querySelector(`[data-id="${storyId}"] .favorite-btn i`);
         btn.className = story.isFavorite ? 'fas fa-heart' : 'far fa-heart';
-        btn.style.color = story.isFavorite ? 'var(--error)' : '';
+        btn.style.color = story.isFavorite ? 'var(--error)' : 'inherit';
         updateStatistics();
     }
 }
@@ -348,10 +346,23 @@ function toggleFavorite(storyId) {
 function copyStory(storyId) {
     const story = generatedStories.find(s => s.id === storyId);
     if (story) {
+        // Fallback to execCommand if Clipboard API not supported
+        if (!navigator.clipboard) {
+            const textArea = document.createElement('textarea');
+            textArea.value = story.content;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            showNotification('Story copied to clipboard!');
+            return;
+        }
+        
         navigator.clipboard.writeText(story.content).then(() => {
             showNotification('Story copied to clipboard!');
         }).catch(err => {
             showNotification('Failed to copy story', 'error');
+            console.error('Copy error:', err);
         });
     }
 }
@@ -365,7 +376,9 @@ function downloadStory(storyId) {
         const a = document.createElement('a');
         a.href = url;
         a.download = `story-${story.id}.txt`;
+        document.body.appendChild(a);
         a.click();
+        document.body.removeChild(a);
         URL.revokeObjectURL(url);
         showNotification('Story downloaded!');
     }
@@ -424,6 +437,8 @@ function startAutoGenerate() {
             } catch (error) {
                 console.error('Auto-generation error:', error);
             }
+        } else {
+            console.warn('Auto-generation paused: invalid configuration');
         }
     }, 30000); // Every 30 seconds
 }

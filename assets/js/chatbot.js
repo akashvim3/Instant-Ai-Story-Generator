@@ -42,14 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize with welcome message
     setTimeout(() => {
-        addBotMessage("Hi! I'm your AI assistant. I can help you with:
-
-• Story generation tips
-• Feature explanations
-• Technical support
-• Best practices for live streaming
-
-What would you like to know?");
+        addBotMessage("Hi! I'm your AI assistant. I can help you with:\n\n• Story generation tips\n• Feature explanations\n• Technical support\n• Best practices for live streaming\n\nWhat would you like to know?");
     }, 1000);
 });
 
@@ -146,28 +139,12 @@ function getBotResponse(message) {
 
     // Story generation help
     if (lowerMessage.includes('how') && (lowerMessage.includes('generate') || lowerMessage.includes('create'))) {
-        return "To generate a story:
-
-1. Select your event type
-2. Describe what's happening
-3. Choose a writing style
-4. Set the story length
-5. Click 'Generate Story'
-
-You can also enable auto-generation for continuous updates every 30 seconds!";
+        return "To generate a story:\n\n1. Select your event type\n2. Describe what's happening\n3. Choose a writing style\n4. Set the story length\n5. Click 'Generate Story'\n\nYou can also enable auto-generation for continuous updates every 30 seconds!";
     }
 
     // Style tips
     if (lowerMessage.includes('style') || lowerMessage.includes('tone')) {
-        return "We offer multiple writing styles:
-
-• Dramatic: High energy and emotional
-• Humorous: Light-hearted and funny
-• Professional: Formal and informative
-• Casual: Friendly and relaxed
-• Inspirational: Motivating and uplifting
-
-Choose based on your audience and content type!";
+        return "We offer multiple writing styles:\n\n• Dramatic: High energy and emotional\n• Humorous: Light-hearted and funny\n• Professional: Formal and informative\n• Casual: Friendly and relaxed\n• Inspirational: Motivating and uplifting\n\nChoose based on your audience and content type!";
     }
 
     // Language support
@@ -177,90 +154,37 @@ Choose based on your audience and content type!";
 
     // Features
     if (lowerMessage.includes('feature') || lowerMessage.includes('what can')) {
-        return "Key features:
-
-✨ Instant AI story generation
-🎨 Multiple writing styles
-🌍 50+ languages
-⚡ Real-time processing
-📊 Analytics dashboard
-💾 Export & share options
-🤖 Auto-generation mode
-
-Explore the Features page for more details!";
+        return "Key features:\n\n✨ Instant AI story generation\n🎨 Multiple writing styles\n🌍 50+ languages\n⚡ Real-time processing\n📊 Analytics dashboard\n💾 Export & share options\n🤖 Auto-generation mode\n\nExplore the Features page for more details!";
     }
 
     // Best practices
     if (lowerMessage.includes('best practice') || lowerMessage.includes('tip')) {
-        return "Pro tips for better stories:
-
-1. Provide detailed event descriptions
-2. Choose the right style for your audience
-3. Use emojis for social media engagement
-4. Add hashtags to increase visibility
-5. Experiment with different styles
-6. Review and edit before sharing
-
-Practice makes perfect!";
+        return "Pro tips for better stories:\n\n1. Provide detailed event descriptions\n2. Choose the right style for your audience\n3. Use emojis for social media engagement\n4. Add hashtags to increase visibility\n5. Experiment with different styles\n6. Review and edit before sharing\n\nPractice makes perfect!";
     }
 
     // Emoji and hashtags
     if (lowerMessage.includes('emoji') || lowerMessage.includes('hashtag')) {
-        return "Emojis and hashtags boost engagement! Enable these options in the configuration panel to:
-
-• Make stories more visually appealing
-• Increase social media reach
-• Express emotions better
-• Join trending conversations
-
-Perfect for Instagram, Twitter, and Facebook!";
+        return "Emojis and hashtags boost engagement! Enable these options in the configuration panel to:\n\n• Make stories more visually appealing\n• Increase social media reach\n• Express emotions better\n• Join trending conversations\n\nPerfect for Instagram, Twitter, and Facebook!";
     }
 
     // Auto-generate
     if (lowerMessage.includes('auto') || lowerMessage.includes('automatic')) {
-        return "Auto-generation creates stories every 30 seconds automatically! Perfect for:
-
-• Live events with continuous action
-• Long streaming sessions
-• Real-time coverage
-• Keeping your audience engaged
-
-Just click the 'Auto-Generate' button to start!";
+        return "Auto-generation creates stories every 30 seconds automatically! Perfect for:\n\n• Live events with continuous action\n• Long streaming sessions\n• Real-time coverage\n• Keeping your audience engaged\n\nJust click the 'Auto-Generate' button to start!";
     }
 
     // Export and save
     if (lowerMessage.includes('export') || lowerMessage.includes('save') || lowerMessage.includes('download')) {
-        return "You can export stories in multiple formats:
-
-• TXT for simple text
-• JSON for data processing
-• CSV for spreadsheets
-
-Use the download button on each story or export all stories at once!";
+        return "You can export stories in multiple formats:\n\n• TXT for simple text\n• JSON for data processing\n• CSV for spreadsheets\n\nUse the download button on each story or export all stories at once!";
     }
 
     // Pricing
     if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('free')) {
-        return "We offer flexible pricing:
-
-• Free trial: 14 days, full access
-• Basic: $9.99/month
-• Pro: $29.99/month
-• Enterprise: Custom pricing
-
-No credit card required for trial!";
+        return "We offer flexible pricing:\n\n• Free trial: 14 days, full access\n• Basic: $9.99/month\n• Pro: $29.99/month\n• Enterprise: Custom pricing\n\nNo credit card required for trial!";
     }
 
     // Technical support
     if (lowerMessage.includes('problem') || lowerMessage.includes('issue') || lowerMessage.includes('help')) {
-        return "I'm here to help! Common solutions:
-
-• Refresh the page if stories won't generate
-• Check your internet connection
-• Clear browser cache
-• Try a different browser
-
-Still having issues? Contact support@aistorystream.com";
+        return "I'm here to help! Common solutions:\n\n• Refresh the page if stories won't generate\n• Check your internet connection\n• Clear browser cache\n• Try a different browser\n\nStill having issues? Contact support@aistorystream.com";
     }
 
     // Thanks
@@ -274,14 +198,7 @@ Still having issues? Contact support@aistorystream.com";
     }
 
     // Default response
-    return "That's a great question! I can help you with:
-
-• Story generation process
-• Feature explanations
-• Best practices and tips
-• Technical support
-
-Could you please rephrase your question or choose a topic above?";
+    return "That's a great question! I can help you with:\n\n• Story generation process\n• Feature explanations\n• Best practices and tips\n• Technical support\n\nCould you please rephrase your question or choose a topic above?";
 }
 
 // Scroll chat to bottom
@@ -300,15 +217,6 @@ function escapeHtml(text) {
 // Clear chat history
 function clearChat() {
     const chatbotMessages = document.getElementById('chatbotMessages');
-    chatbotMessages.innerHTML = `
-        <div class="bot-message">
-            <div class="message-avatar">
-                <i class="fas fa-robot"></i>
-            </div>
-            <div class="message-content">
-                Chat cleared! How can I help you?
-            </div>
-        </div>
-    `;
+    chatbotMessages.innerHTML = `<div class="bot-message"><div class="message-avatar"><i class="fas fa-robot"></i></div><div class="message-content">Chat cleared! How can I help you?</div></div>`;
     chatHistory = [];
 }

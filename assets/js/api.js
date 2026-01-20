@@ -33,7 +33,7 @@ async function generateStoryWithAI(config) {
         });
 
         if (!response.ok) {
-            throw new Error('API request failed');
+            throw new Error(`API request failed with status ${response.status}: ${response.statusText}`);
         }
 
         const data = await response.json();
@@ -94,7 +94,7 @@ async function translateText(text, targetLanguage) {
         });
 
         if (!response.ok) {
-            throw new Error('Translation failed');
+            throw new Error(`Translation failed with status ${response.status}: ${response.statusText}`);
         }
 
         const data = await response.json();
@@ -121,7 +121,7 @@ async function analyzeContent(text) {
         });
 
         if (!response.ok) {
-            throw new Error('Analysis failed');
+            throw new Error(`Analysis failed with status ${response.status}: ${response.statusText}`);
         }
 
         const data = await response.json();
@@ -193,8 +193,7 @@ function convertToCSV(stories) {
         story.isFavorite
     ]);
 
-    return [headers, ...rows].map(row => row.join(',')).join('
-');
+    return [headers, ...rows].map(row => row.join(',')).join('\n');
 }
 
 // Share to social media platforms
@@ -209,6 +208,8 @@ function shareToSocial(story, platform) {
 
     if (urls[platform]) {
         window.open(urls[platform], '_blank', 'width=600,height=400');
+    } else {
+        console.warn(`Platform ${platform} is not supported for sharing`);
     }
 }
 
@@ -221,6 +222,10 @@ class LiveStreamConnection {
     }
 
     connect() {
+        if (!window.WebSocket) {
+            console.error('WebSocket is not supported by this browser');
+            return;
+        }
         this.ws = new WebSocket(this.streamUrl);
 
         this.ws.onopen = () => {
